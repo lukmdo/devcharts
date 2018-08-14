@@ -7,7 +7,7 @@ steps:
       - date
 
   helm_push:
-    image: codefresh/cfstep-helm:2.9.1
+    image: codefresh/cfstep-helm:2.8.2
     commands:
       - kubectl config get-contexts
     environment:
@@ -15,7 +15,7 @@ steps:
       - CHART_REF=charts/mock-http
 
   helm_deploy:
-    image: codefresh/cfstep-helm:2.9.1
+    image: codefresh/cfstep-helm:2.8.2
     environment:
     - CHART_REF=charts/mock-http
     - RELEASE_NAME=dev-mock-http

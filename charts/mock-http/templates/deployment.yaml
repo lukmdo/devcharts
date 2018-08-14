@@ -13,8 +13,11 @@ spec:
   template:
     metadata:
       labels:
-        app: auth-stub
+        app: http-mock
     spec:
       containers:
       - name: mock-http-server
         image: deis/mock-http-server
+        ports:
+          - containerPort: 8080
+          - protocol: TCP
