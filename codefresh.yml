@@ -6,6 +6,24 @@ steps:
     commands:
       - date
 
+  docker_build:
+    title: building image
+    type: build
+    working_directory: src/mock_http
+    image_name: lukmdo/mock-http
+
+  docker_push:
+    type: push
+    title: Step Title
+    description: Free text description
+    candidate: ${{build_step_name}}
+    tag: latest  # ${{CF_BRANCH}}
+    image_name: lukmdo/mock-http
+    when:
+      branch:
+        only:
+          - master
+
   helm_push:
     image: codefresh/cfstep-helm:2.8.2
     commands:
@@ -26,18 +44,6 @@ steps:
           - deploy
           - master
 
-#  build_step:
-#    title: building image
-#    type: build
-#    image_name: --image-name--
-
-#  step_name:
-#    type: push
-#    title: Step Title
-#    candidate:${{build_step}}
-#    tag: ${{CF_BRANCH}}
-#    image_name: --image-name--
-#    registry: dockerhub
 
 #  deploy_to_k8:
 #    title: deploying to cluster
