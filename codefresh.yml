@@ -14,9 +14,8 @@ steps:
 
   docker_push:
     type: push
-    title: Step Title
     description: Free text description
-    candidate: ${{build_step_name}}
+    candidate: ${{docker_build}}
     tag: latest  # ${{CF_BRANCH}}
     image_name: lukmdo/mock-http
     when:
