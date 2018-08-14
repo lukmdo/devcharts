@@ -16,7 +16,9 @@ steps:
     type: push
     description: Free text description
     candidate: ${{docker_build}}
-    tag: latest  # ${{CF_BRANCH}}
+    tags:
+    - latest
+    - ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
     image_name: lukmdo/mock-http
     when:
       branch:
@@ -37,6 +39,8 @@ steps:
     - CHART_REF=charts/mock-http
     - RELEASE_NAME=dev-mock-http
     - KUBE_CONTEXT=lukmdo-sauce@core-services
+    - VALUE_image_pullPolicy=Always
+    - VALUE_image_tag='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     when:
       branch:
         only:

@@ -1,1 +1,4 @@
 owner: devlukmdo
+image:
+  name: lukmdo/mock-http
+  tag: latest
