@@ -7,11 +7,21 @@ steps:
       - date
 
   helm_push:
-    image: codefresh/cfstep-helm:2.9.0
+    image: codefresh/cfstep-helm:2.9.1
     environment:
       - ACTION=push
       - CHART_REF=charts/mock-http
 
+  helm_deploy:
+    image: codefresh/cfstep-helm:2.9.1
+    environment:
+    - CHART_REF=charts/mock-http
+    - RELEASE_NAME=dev-mock-http
+    - KUBE_CONTEXT=cf
+    when:
+      branch:
+        only:
+          - deploy
 
 #  build_step:
 #    title: building image
