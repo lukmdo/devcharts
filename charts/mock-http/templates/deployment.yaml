@@ -19,5 +19,5 @@ spec:
       - name: mock-http-server
         image: deis/mock-http-server
         ports:
-          - containerPort: 8080
-          - protocol: TCP
+        - containerPort: 8080
+          protocol: TCP
