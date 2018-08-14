@@ -6,6 +6,13 @@ steps:
     commands:
       - date
 
+  helm_push:
+    image: codefresh/cfstep-helm:2.9.0
+    environment:
+      - ACTION=push
+      - CHART_REF=charts/mock-http
+
+
 #  build_step:
 #    title: building image
 #    type: build
