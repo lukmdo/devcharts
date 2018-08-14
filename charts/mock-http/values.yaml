@@ -2,3 +2,4 @@ owner: devlukmdo
 image:
   name: lukmdo/mock-http
   tag: latest
+  pullSecretNane: codefresh-generated-r.cfcr.io-cfcr-default

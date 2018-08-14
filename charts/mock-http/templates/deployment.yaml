@@ -15,10 +15,13 @@ spec:
       labels:
         app: http-mock
     spec:
+      imagePullSecrets:
+      - name: {{ .Values.image.pullSecretNane }}
       containers:
       - name: mock-http-server
         image: {{ .Values.image.name }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+
         ports:
         - containerPort: 8080
           protocol: TCP
