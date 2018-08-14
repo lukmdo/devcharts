@@ -8,6 +8,8 @@ steps:
 
   helm_push:
     image: codefresh/cfstep-helm:2.9.1
+    commands:
+      - kubectl config get-contexts
     environment:
       - ACTION=push
       - CHART_REF=charts/mock-http
@@ -17,11 +19,12 @@ steps:
     environment:
     - CHART_REF=charts/mock-http
     - RELEASE_NAME=dev-mock-http
-    - KUBE_CONTEXT=cf
+    - KUBE_CONTEXT=lukmdo-sauce@core-services
     when:
       branch:
         only:
           - deploy
+          - master
 
 #  build_step:
 #    title: building image
