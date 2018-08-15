@@ -30,8 +30,6 @@ steps:
 
   helm_push:
     image: codefresh/cfstep-helm:2.8.2
-    commands:
-      - kubectl config get-contexts
     environment:
       - ACTION=push
       - CHART_REF=charts/mock-http
@@ -40,10 +38,13 @@ steps:
     image: codefresh/cfstep-helm:2.8.2
     environment:
     - CHART_REF=charts/mock-http
-    - RELEASE_NAME=dev-mock-http
+    - RELEASE_NAME=dev
     - KUBE_CONTEXT=lukmdo-sauce@core-services
     - VALUE_image_pullPolicy=Always
     - VALUE_image_tag='${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    - VALUE_cfbuild_initiator='${{CF_BUILD_INITIATOR}}'
+    - VALUE_cfbuild_trigger='${{CF_BUILD_TRIGGER}}'
+    - VALUE_cfbuild_url='${{CF_BUILD_URL}}'
     when:
       branch:
         only:
