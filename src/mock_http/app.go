@@ -37,6 +37,8 @@ func init() {
 
 
 func main() {
+	port := "8080"
 	http.Handle("/", loggerMW(http.HandlerFunc(handler)))
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Printf("Starting on port:%s version:%s", port, Version)
+	log.Fatal(http.ListenAndServe(":" + port, nil))
 }

@@ -11,6 +11,9 @@ steps:
     type: build
     working_directory: src/mock_http
     image_name: mock-http
+    build_arguments:
+      - BTIME=${{CF_BUILD_TIMESTAMP}}
+      - BHASH=${{CF_REVISION}}
 
   docker_push:
     type: push
@@ -19,7 +22,7 @@ steps:
     tags:
     - latest
     - ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
-    image_name: mock-http
+#    image_name: mock-http
     when:
       branch:
         only:
