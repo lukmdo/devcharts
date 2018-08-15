@@ -21,7 +21,6 @@ spec:
       - name: mock-http-server
         image: {{ .Values.image.name }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-
         ports:
         - containerPort: 8080
           protocol: TCP

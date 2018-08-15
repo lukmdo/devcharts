@@ -10,7 +10,7 @@ steps:
     title: building image
     type: build
     working_directory: src/mock_http
-    image_name: lukmdo/mock-http
+    image_name: mock-http
 
   docker_push:
     type: push
@@ -19,7 +19,7 @@ steps:
     tags:
     - latest
     - ${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}
-    image_name: lukmdo/mock-http
+    image_name: mock-http
     when:
       branch:
         only:
